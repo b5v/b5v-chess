@@ -10,3 +10,4 @@ export { default as WhiteKnight } from './WhiteKnight.svg';
 export { default as WhitePawn } from './WhitePawn.svg';
 export { default as WhiteQueen } from './WhiteQueen.svg';
 export { default as WhiteRook } from './WhiteRook.svg';
+export { default as EmptyPiece } from './EmptyPiece.svg';

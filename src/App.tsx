@@ -1,36 +1,23 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
-import {
-  BlackBisoph,
-  BlackKing,
-  BlackKnight,
-  BlackPawn,
-  BlackQueen,
-  BlackRook,
-  WhiteBisoph,
-  WhiteKing,
-  WhiteKnight,
-  WhitePawn,
-  WhiteQueen,
-  WhiteRook,
-} from './SVG';
+import Board from './components/Board';
+
+export const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  
+  body {
+    background: rgb(20, 20, 100);
+  }
+`;
 
 const App = () => (
-  <div>
-    <BlackBisoph />
-    <BlackKing />
-    <BlackKnight />
-    <BlackPawn />
-    <BlackQueen />
-    <BlackRook />
-    <WhiteBisoph />
-    <WhiteKing />
-    <WhiteKnight />
-    <WhitePawn />
-    <WhiteQueen />
-    <WhiteRook />
-  </div>
+  <>
+    <GlobalStyle />
+    <Board />
+  </>
 );
 
 ReactDom.render(<App />, document.getElementById('root'));
