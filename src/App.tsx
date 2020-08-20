@@ -1,6 +1,36 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-const App = () => <div>b5v-chess</div>;
+import {
+  BlackBisoph,
+  BlackKing,
+  BlackKnight,
+  BlackPawn,
+  BlackQueen,
+  BlackRook,
+  WhiteBisoph,
+  WhiteKing,
+  WhiteKnight,
+  WhitePawn,
+  WhiteQueen,
+  WhiteRook,
+} from './SVG';
+
+const App = () => (
+  <div>
+    <BlackBisoph />
+    <BlackKing />
+    <BlackKnight />
+    <BlackPawn />
+    <BlackQueen />
+    <BlackRook />
+    <WhiteBisoph />
+    <WhiteKing />
+    <WhiteKnight />
+    <WhitePawn />
+    <WhiteQueen />
+    <WhiteRook />
+  </div>
+);
 
 ReactDom.render(<App />, document.getElementById('root'));
