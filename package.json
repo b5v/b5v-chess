@@ -25,6 +25,7 @@
     "eslint-plugin-react": "^7.20.6",
     "html-webpack-plugin": "^4.3.0",
     "prettier": "^2.0.5",
+    "svg-react-loader": "^0.4.6",
     "typescript": "^3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
