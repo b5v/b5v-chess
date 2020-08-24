@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 
+import { isDarkSquare, getFileAndRank } from './utils';
 import Square from './Square';
-
 import {
   BlackBisoph,
   BlackKing,
@@ -27,80 +27,39 @@ const BoardWrap = styled.div`
   grid-template-columns: repeat(8, 1fr);
 `;
 
-const Board: FC = () => {
+const PIECE_MAP = {
+  r: <BlackRook />,
+  n: <BlackKnight />,
+  b: <BlackBisoph />,
+  q: <BlackQueen />,
+  k: <BlackKing />,
+  p: <BlackPawn />,
+  x: <EmptyPiece />,
+  R: <WhiteRook />,
+  N: <WhiteKnight />,
+  B: <WhiteBisoph />,
+  Q: <WhiteQueen />,
+  K: <WhiteKing />,
+  P: <WhitePawn />,
+} as { [key: string]: ReactNode };
+
+type Props = {
+  boardState: string;
+};
+
+const Board: FC<Props> = ({ boardState }) => {
   return (
     <BoardWrap>
-      <Square piece={<BlackRook />} />
-      <Square piece={<BlackKnight />} isDarkSquare />
-      <Square piece={<BlackBisoph />} />
-      <Square piece={<BlackQueen />} isDarkSquare />
-      <Square piece={<BlackKing />} />
-      <Square piece={<BlackBisoph />} isDarkSquare />
-      <Square piece={<BlackKnight />} />
-      <Square piece={<BlackRook />} isDarkSquare />
-
-      <Square piece={<BlackPawn />} isDarkSquare />
-      <Square piece={<BlackPawn />} />
-      <Square piece={<BlackPawn />} isDarkSquare />
-      <Square piece={<BlackPawn />} />
-      <Square piece={<BlackPawn />} isDarkSquare />
-      <Square piece={<BlackPawn />} />
-      <Square piece={<BlackPawn />} isDarkSquare />
-      <Square piece={<BlackPawn />} />
-
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-      <Square piece={<EmptyPiece />} isDarkSquare />
-      <Square piece={<EmptyPiece />} />
-
-      <Square piece={<WhitePawn />} />
-      <Square piece={<WhitePawn />} isDarkSquare />
-      <Square piece={<WhitePawn />} />
-      <Square piece={<WhitePawn />} isDarkSquare />
-      <Square piece={<WhitePawn />} />
-      <Square piece={<WhitePawn />} isDarkSquare />
-      <Square piece={<WhitePawn />} />
-      <Square piece={<WhitePawn />} isDarkSquare />
-
-      <Square piece={<WhiteRook />} isDarkSquare />
-      <Square piece={<WhiteKnight />} />
-      <Square piece={<WhiteBisoph />} isDarkSquare />
-      <Square piece={<WhiteQueen />} />
-      <Square piece={<WhiteKing />} isDarkSquare />
-      <Square piece={<WhiteBisoph />} />
-      <Square piece={<WhiteKnight />} isDarkSquare />
-      <Square piece={<WhiteRook />} />
+      {boardState.split('').map((piece: string, idx) => {
+        return (
+          <Square
+            key={getFileAndRank(idx)}
+            piece={PIECE_MAP[piece]}
+            isDarkSquare={isDarkSquare(idx)}
+            onClick={(): null => null}
+          />
+        );
+      })}
     </BoardWrap>
   );
 };
