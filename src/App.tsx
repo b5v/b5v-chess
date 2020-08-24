@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
@@ -13,11 +13,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <Board />
-  </>
-);
+const initialBoardState =
+  'rnbqkbnrppppppppxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxPPPPPPPPRNBQKBNR';
+
+const App = () => {
+  const [boardState] = useState(initialBoardState);
+
+  return (
+    <>
+      <GlobalStyle />
+      <Board boardState={boardState} />
+    </>
+  );
+};
 
 ReactDom.render(<App />, document.getElementById('root'));
